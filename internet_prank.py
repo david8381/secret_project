@@ -44,7 +44,7 @@ def repeated_update_ips():
 def send_message(message):
 #	for ip in ip_list:
 #		UDPSock.sendto(message, (ip, port))
-	UDPSock.sendto(message, ("192.168.1.1", port))
+	UDPSock.sendto(message, ("192.168.1.115", port))
 
 def repeat_send():
 	while True:
