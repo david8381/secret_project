@@ -25,9 +25,7 @@ def setup_socket(addr):
 		UDPSock.bind(addr)
 	except Exception as e:
         	print e
-		print "Looks like your computer is already using that port, or that port is not permited."
-		print "If the port is between the set ranges, try using the following command: `ps -fA | grep python`. If any of the processes show up as `ChatBot2`, try killing the process by running 'kill `process_number`'."
-		print "*Replace `process_number` with the second number on the line that has the process you need to kill."
+		print "Looks like there was a problem. Try doing the following to fix your problem: \nIf you did not run the program with 'sudo', run 'sudo python internet_prank.py'. \nIf this does not work, then contact the creator of this program."
 		close()
 
 setup_socket((host, port))
@@ -44,15 +42,17 @@ def repeated_update_ips():
 def send_message(message):
 #	for ip in ip_list:
 #		UDPSock.sendto(message, (ip, port))
-	UDPSock.sendto(message, ("192.168.1.115", port))
+	UDPSock.sendto(message, ("192.168.1.1", port))
 
 def repeat_send():
 	while True:
 		send_message(" ")
 
 def sub_main():
+#	print "Initializing"
 #	update_ips()
-	print "Finished"
+	print "Jamming Activated"
+	print "Use ctrl-c to stop"
 #	p1 = mp.Process(target=repeat_send)
 #        p2 = mp.Process(target=repeat_send)
 #        p3 = mp.Process(target=repeat_send)
