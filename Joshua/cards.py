@@ -6,4 +6,4 @@ class Deck:
         deck2 = Deck(self.cards[position:])
         return deck1, deck2
     def __repr__(self):
-        return self.cards
+        return str(self.cards)
