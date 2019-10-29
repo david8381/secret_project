@@ -7,3 +7,6 @@ class Deck:
         return deck1, deck2
     def __repr__(self):
         return str(self.cards)
+    def connect(self, deck1, deck2):
+        fdeck = zip(deck1, deck2)
+        return zip(fdeck)
