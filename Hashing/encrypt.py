@@ -1,5 +1,6 @@
 from Crypto.Cipher import AES
 from base64 import b64encode, b64decode
+import make_key
 
 
 class Crypt:
@@ -9,9 +10,7 @@ class Crypt:
         self.enc_dec_method = 'utf-8'
 
     def encrypt(self, str_to_enc, str_key):
-        if len(str_key) < 32:
-                for i in range(0, 32-len(str_key)):
-                    str_key = str_key+"~"
+        str_key = make_key.convert(str_key)
         try:
             aes_obj = AES.new(str_key, AES.MODE_CFB, self.salt)
             hx_enc = aes_obj.encrypt(str_to_enc)
@@ -26,9 +25,7 @@ class Crypt:
                 raise ValueError(value_error)
 
     def decrypt(self, enc_str, str_key):
-        if len(str_key) < 32:
-            for i in range(0, 32-len(str_key)):
-                str_key = str_key+"~"
+        str_key = make_key.convert(str_key)
         try:
             aes_obj = AES.new(str_key, AES.MODE_CFB, self.salt)
             str_tmp = b64decode(enc_str.encode(self.enc_dec_method))
@@ -42,3 +39,22 @@ class Crypt:
                 raise ValueError('Decryption Error: Encryption key must be less than 32 characters long')
             else:
                 raise ValueError(value_error)
+
+
+def menu():
+    print("1: Encrypt a file")
+    print("2: Decrypt a file")
+    value = input("> ")
+    if value in ['1', '2']:
+        return value
+    else:
+        print("Invalid option")
+        return menu()
+
+
+if __name__ == "__main__":
+    value = menu()
+    if value == '1':
+        encrypt_file()
+    elif value == '2':
+        decrypt_file()
