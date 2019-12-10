@@ -19,15 +19,15 @@ def generate_key(password_provided):
     return base64.urlsafe_b64encode(kdf.derive(password)) # Can only use kdf once
 
 
-def encrypt(text, key):
+def encrypt(text, password):
     text = text.encode()
-    f = Fernet(key)
+    f = Fernet(generate_key(password))
     encrypted = f.encrypt(text)
     return encrypted
 
 
-def decrypt(encrypted_text, key):
-    f = Fernet(key)
+def decrypt(encrypted_text, password):
+    f = Fernet(generate_key(password))
     to_decrypt = encrypted_text
     decrypted = f.decrypt(to_decrypt)
     return decrypted
@@ -36,10 +36,10 @@ def decrypt(encrypted_text, key):
 if __name__ == '__main__':
     password = input("Password> ")
     text = input("Text to encrypt> ")
-    key = generate_key(password)
+    key = generate_key(password) # This line is not needed. Just so it can be printed later so the user can see the key
 
-    encrypted_text = encrypt(text, key)
-    decrypted_text = decrypt(encrypted_text, key)
+    encrypted_text = encrypt(text, password)
+    decrypted_text = decrypt(encrypted_text, password)
 
     print("\n\n")
     print("Password: " + password)
