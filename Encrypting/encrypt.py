@@ -23,14 +23,14 @@ def encrypt(text, password):
     text = text.encode()
     f = Fernet(generate_key(password))
     encrypted = f.encrypt(text)
-    return encrypted
+    return encrypted.decode()
 
 
 def decrypt(encrypted_text, password):
     f = Fernet(generate_key(password))
-    to_decrypt = encrypted_text
+    to_decrypt = encrypted_text.encode()
     decrypted = f.decrypt(to_decrypt)
-    return decrypted
+    return decrypted.decode()
 
 
 if __name__ == '__main__':
