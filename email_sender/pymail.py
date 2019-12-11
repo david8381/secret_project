@@ -13,22 +13,19 @@ def send(subject, message):
     if sender_email == "":
         print("Unable to send mail because sender_email is blank.")
         instructions()
-        exit()
     if receiver_email == "":
         print("Please set receiver_email to your email address.")
         instructions()
-        exit()
     else:
         context = ssl.create_default_context()
         with smtplib.SMTP(smtp_server, port) as server:
             server.starttls(context=context)
             try:
                 server.login(sender_email, password)
+                server.sendmail(sender_email, receiver_email, "subject: "+subject+"\n\n"+message)
             except:
                 print("A login error occured. Please check email, password, and that you set \"Allow less secure apps\" to true. You can do this at https://myaccount.google.com/lesssecureapps.")
                 instructions()
-                exit()
-            server.sendmail(sender_email, receiver_email, "subject: "+subject+"\n\n"+message)
 
 
 def instructions():
