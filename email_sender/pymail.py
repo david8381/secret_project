@@ -5,7 +5,7 @@ smtp_server = "smtp.gmail.com"
 
 #Change these
 sender_email = ""
-password = ""
+password = input("Please enter your password> ")
 receiver_email = ""
 
 
@@ -30,7 +30,7 @@ def send(subject, message):
 
 def instructions():
         print("\n")
-        print("To use pymail:\n(1) Create a new email with google for pymail to send messages from.\n(2) Go to https://myaccount.google.com/lesssecureapps and set \"Allow less secure apps\" for the new email address to true. Make sure your at the right email address.\n(3) Open pymail.py\n(4) Set sender_email and password to the corresponding info.\n(5) Set receiver_email to your email address.\n(6) Import pymail and run pymail.send(subject, message).\nRun this program again to send a test email.")
+        print("To use pymail:\n(1) Create a new email with google for pymail to send messages from.\n(2) Go to https://myaccount.google.com/lesssecureapps and set \"Allow less secure apps\" for the new email address to true. Make sure your at the right email address.\n(3) Open pymail.py\n(4) Set sender_email to the email you created.\n(5) Set receiver_email to your email address.\n(6) Import pymail and run pymail.send(subject, message).\nRun this program again to send a test email.")
         print("\n")
 
 
