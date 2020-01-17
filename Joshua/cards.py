@@ -2,15 +2,17 @@ import random
 
 class Deck:
     def __init__(self, cardlist):
-        self.cards = list(range(1, cardlist+1))
+        if type(cardlist) == int:
+            self.cards = list(range(1, cardlist+1))
+        elif type(cardlist == list:
+            self.cards = cardlist
     def split(self, position):
-        deck1 = self.cards[:position]
-        deck2 = self.cards[position:]
+        deck1 = Deck(self.cards[:position])
+        deck2 = Deck(self.cards[position:])
         return deck1, deck2
     def __repr__(self):
         return str(self.cards)
-    def connect(self, where):
-       deck1, deck2 = self.split(where)
+    def connect(self, deck2):
        jdeck = []
        while len(deck1) + len(deck2) > 0:
             if len(deck1) > 0 and len(deck2) > 0:
