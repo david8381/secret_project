@@ -2,7 +2,7 @@ import random
 
 class Deck:
     def __init__(self, cardlist):
-        self.cards = range(1, cardlist+1)
+        self.cards = list(range(1, cardlist+1))
     def split(self, position):
         deck1 = self.cards[:position]
         deck2 = self.cards[position:]
