@@ -8,7 +8,7 @@ def make_deck(): #Something is wrong with this function
     for i in range(0, 2):
         deck.append(Card("joker", "joker"))
     for value in values:
-        for card_class in classes:		
+        for card_class in classes:
             deck.append(Card(value, card_class))
     return deck
 
@@ -32,14 +32,14 @@ def join_decks(deck1, deck2):
 
 
 class Card_deck:
-    def __init__(self):
+    def __init__(self, cards=range(1, 53)):
         self.deck = []
-        for card in range(0, 52):
+        for card in cards:
             self.deck.append(card)
     def split_deck(self, split_point):
-    	return self.deck[:split_point], self.deck[split_point:]
+    	return Card_deck(self.deck[:split_point]), Card_deck(self.deck[split_point:])
     def __repr__(self):
-    	return self.deck 
+    	return self.deck
 
 
 class Card:
