@@ -14,13 +14,13 @@ def make_deck(): #Something is wrong with this function
 
 
 def join_decks(deck1, deck2):
-    deck_len = len(deck1) + len(deck2)
+    deck_len = len(deck1.deck) + len(deck2.deck)
     joined_deck = []
     cp_deck1 = []
     cp_deck2 = []
-    for card in deck1:
+    for card in deck1.deck:
         cp_deck1.append(card)
-    for card in deck2:
+    for card in deck2.deck:
         cp_deck2.append(card)
     decks = [cp_deck1, cp_deck2]
     while len(cp_deck1) > 0 or len(cp_deck2) > 0:
@@ -39,7 +39,7 @@ class Card_deck:
     def split_deck(self, split_point):
     	return Card_deck(self.deck[:split_point]), Card_deck(self.deck[split_point:])
     def __repr__(self):
-    	return self.deck
+    	return str(self.deck)
 
 
 class Card:
