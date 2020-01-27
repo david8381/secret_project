@@ -30,10 +30,12 @@ class Deck:
                 jdeck.append(deck2[0])
                 deck2.pop(0)
        return Deck(jdeck)
-    def shuffle(self, deck2, times):
-       shuffled = 0 
-       jdeck = []
-       while shuffled < times:
-           jdeck = self.connect(deck2)
-           shuffled = shuffled + 1
-       return Deck(jdeck)
+    def shuffle(self, times, splitPoint):
+       shuffled = 0
+       while times > shuffled:
+            d1, d2 = self.split(splitPoint)
+            d = d1.connect(d2)
+            shuffled = shuffled + 1
+       return d
+
+
