@@ -2,10 +2,7 @@ import sys
 from deck import Deck, combine_decks
 
 def get_cards():
-    card_suits = ['H', 'S', 'C', 'D']
-    card_denominations = ['A', 'K', 'Q', 'J'] + [str(x) for x in range(2, 11)]
-    cards = [x + y for x in card_suits for y in card_denominations]
-    return cards
+    return list(range(52))
 
 if __name__ == '__main__':
 
