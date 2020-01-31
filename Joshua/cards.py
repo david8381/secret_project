@@ -32,8 +32,9 @@ class Deck:
        return Deck(jdeck)
     def shuffle(self, times, splitPoint):
        shuffled = 0
+       d = self
        while times > shuffled:
-            d1, d2 = self.split(splitPoint)
+            d1, d2 = d.split(splitPoint)
             d = d1.connect(d2)
             shuffled = shuffled + 1
        return d
