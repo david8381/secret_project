@@ -4,7 +4,7 @@ class Deck:
     def __init__(self, cardlist):
         if type(cardlist) == int:
             self.cards = list(range(1, cardlist+1))
-        elif type(cardlist == list:
+        elif type(cardlist) == list:
             self.cards = cardlist
     def split(self, position):
         deck1 = Deck(self.cards[:position])
@@ -13,6 +13,8 @@ class Deck:
     def __repr__(self):
         return str(self.cards)
     def connect(self, deck2):
+       deck1 = self.cards
+       deck2 = deck2.cards
        jdeck = []
        while len(deck1) + len(deck2) > 0:
             if len(deck1) > 0 and len(deck2) > 0:
@@ -27,6 +29,13 @@ class Deck:
             else:
                 jdeck.append(deck2[0])
                 deck2.pop(0)
-       return jdeck
+       return Deck(jdeck)
+    def shuffle(self, times, splitPoint):
+       shuffled = 0
+       while times > shuffled:
+            d1, d2 = self.split(splitPoint)
+            d = d1.connect(d2)
+            shuffled = shuffled + 1
+       return d
 
 
