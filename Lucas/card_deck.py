@@ -1,16 +1,8 @@
 #Create by Lucas Daniels
 from random import randint
+from matplotlib import pyplot as plt
 classes = ["Hearts", "Diamonds", "Spades", "Clubs"]
 values = ["2", "3", "4", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
-
-def make_deck(): #Something is wrong with this function
-    deck = []
-    for i in range(0, 2):
-        deck.append(Card("joker", "joker"))
-    for value in values:
-        for card_class in classes:
-            deck.append(Card(value, card_class))
-    return deck
 
 
 def join_decks(deck1, deck2):
@@ -28,7 +20,14 @@ def join_decks(deck1, deck2):
         if len(deck) > 0:
             joined_deck.append(deck[0])
             deck.pop(0)
-    return joined_deck
+    return Card_deck(joined_deck)
+
+
+def shuffle(loops, d):
+    for i in range(0, loops):
+        d1, d2 = d.split(26)
+        d = join_decks(d1, d2)
+    return d
 
 
 class Card_deck:
@@ -36,8 +35,10 @@ class Card_deck:
         self.deck = []
         for card in cards:
             self.deck.append(card)
-    def split_deck(self, split_point):
+    def split(self, split_point):
     	return Card_deck(self.deck[:split_point]), Card_deck(self.deck[split_point:])
+    def display(self):
+        plt.scatter(range(0, len(self.deck)), self.deck)
     def __repr__(self):
     	return str(self.deck)
 
