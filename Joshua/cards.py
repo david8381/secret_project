@@ -38,10 +38,11 @@ class Deck:
        shuffled = 0
        d = self
        while times > shuffled:
-            d1, d2 = d.split(splitPoint)
-            d = d1.connect(d2)
-            shuffled = shuffled + 1
+           d1, d2 = d.split_deck(splitPoint)
+           d = d1.combine_decks(d2)
+           shuffled = shuffled + 1
        return d
+# THIS IS THE END OF THE DECK CLASS!
 def combine_decks(self, deck2):
     deck1 = self.cards
     deck2 = deck2.cards
