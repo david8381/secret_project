@@ -2,7 +2,7 @@ import speech_recognition as sr
 
 r = sr.Recognizer()
 
-alert = sr.AudioFile('test.wav')
+alert = sr.AudioFile('welcome.wav')
 with alert as source:
     audio = r.record(source)
 

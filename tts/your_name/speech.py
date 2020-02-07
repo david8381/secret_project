@@ -31,7 +31,7 @@ def s_input(prompt=""):
         return stt("input.wav")
     except:
         say("I couldn't hear you, please try again.")
-        return s_input(prompt)
+        return s_input()
 
 
 if __name__ == '__main__':

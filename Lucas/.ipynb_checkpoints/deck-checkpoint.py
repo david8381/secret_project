@@ -49,9 +49,11 @@ def make_array(list_of_decks):
 
 
 def display_array(array): #This function needs work
-    for deck in array:
-        plt.scatter(range(0, len(deck)), deck)
-    plt.show()
+    plt.pcolor(array)
+    plt.colorbar()
+    #for deck in array:
+    #    plt.scatter(range(0, len(deck)), deck)
+    #plt.show()
 
 
 class Deck:
