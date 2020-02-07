@@ -24,10 +24,14 @@ def stt(file_name):
 
 
 def s_input(prompt=""):
-    if prompt != "":
-        say(prompt)
-    record("input.wav")
-    return stt("input.wav")
+    try:
+        if prompt != "":
+             say(prompt)
+        record("input.wav")
+        return stt("input.wav")
+    except:
+        say("I couldn't hear you, please try again.")
+        return s_input(prompt)
 
 
 if __name__ == '__main__':
