@@ -9,6 +9,15 @@ classes = ["Hearts", "Diamonds", "Spades", "Clubs"]
 values = ["2", "3", "4", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
 
 
+def create_list_of_decks(n, shuffle_num, D):
+    D1 = D
+    list_of_decks = []
+    for i in range(0, n):
+        D1 = shuffle(shuffle_num, int(len(D.deck)/2), D)
+        list_of_decks.append(D1)
+    return list_of_decks
+
+
 def combine_decks(deck1, deck2):
     deck_len = len(deck1.deck) + len(deck2.deck)
     joined_deck = []
@@ -41,7 +50,7 @@ def make_array(list_of_decks):
     array = array.reshape(deck_length, deck_length)
     for x, deck in enumerate(list_of_decks):
         for y, card in enumerate(deck.deck):
-            array[card, y] += 1
+            array[card-1, y] += 1
     for x, row in enumerate(array):
         for y, column in enumerate(row):
             array[x, y] = array[x, y]/number_of_decks
