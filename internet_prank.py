@@ -24,8 +24,8 @@ def setup_socket(addr):
 	try:
 		UDPSock.bind(addr)
 	except Exception as e:
-        	print e
-		print "Looks like there was a problem. Try doing the following to fix your problem: \nIf you did not run the program with 'sudo', run 'sudo python internet_prank.py'. \nIf this does not work, then contact the creator of this program."
+		print(e)
+		print("Looks like there was a problem. Try doing the following to fix your problem: \nIf you did not run the program with 'sudo', run 'sudo python internet_prank.py'. \nIf this does not work, then contact the creator of this program.")
 		close()
 
 setup_socket((host, port))
@@ -42,17 +42,17 @@ def repeated_update_ips():
 def send_message(message):
 #	for ip in ip_list:
 #		UDPSock.sendto(message, (ip, port))
-	UDPSock.sendto(message, ("192.168.1.1", port))
+	UDPSock.sendto(message, ("192.168.1.110", port))
 
 def repeat_send():
 	while True:
-		send_message(" ")
+		send_message(b'')
 
 def sub_main():
-#	print "Initializing"
+#	print("Initializing")
 #	update_ips()
-	print "Jamming Activated"
-	print "Use ctrl-c to stop"
+	print("Jamming Activated")
+	print("Use ctrl-c to stop")
 #	p1 = mp.Process(target=repeat_send)
 #        p2 = mp.Process(target=repeat_send)
 #        p3 = mp.Process(target=repeat_send)
@@ -76,8 +76,8 @@ def main():
 	try:
 		sub_main()
 	except Exception as e:
-		print (e)
+		print(e)
 	finally:
-		print "Closing ports..."
+		print("Closing ports...")
 		close()
 main()
